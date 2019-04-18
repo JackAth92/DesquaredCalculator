@@ -21,8 +21,8 @@ public class InfixToPostfix implements InfixToPostfixInter {
     public List<String> transformInfixToPostFix(String infix) {
         stack = new Stack<>();
         postFix = new ArrayList<>();
-        if (ProjectUtils.isExpressionValid(infix)) {
-            for (String part : ProjectUtils.ConvertStringToList(infix)) {
+        if (ProjectUtils.isExpressionValid(trimInfix(infix))) {
+            for (String part : ProjectUtils.ConvertStringToList(trimInfix(infix))) {
                 switch (part) {
                     case "+":
                     case "-":
@@ -46,7 +46,7 @@ public class InfixToPostfix implements InfixToPostfixInter {
             while (!stack.isEmpty()) {
                 postFix.add(stack.pop());
             }
-        }else {
+        } else {
             postFix.add("Not valid expression");
         }
         return postFix;
@@ -87,5 +87,14 @@ public class InfixToPostfix implements InfixToPostfixInter {
         } else {
             return HIGH_PRIORITY;
         }
+    }
+
+    private String trimInfix(String infix) {
+        if (!infix.isEmpty()) {
+            if (ProjectUtils.isOperator(infix.charAt(infix.length() - 1))) {
+                infix = infix.substring(0, infix.length() - 1);
+            }
+        }
+        return infix;
     }
 }

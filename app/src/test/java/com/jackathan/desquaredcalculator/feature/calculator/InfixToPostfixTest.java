@@ -41,6 +41,7 @@ public class InfixToPostfixTest {
         assertEquals(createExpectedList(""), infixToPostfix.transformInfixToPostFix(""));
         assertEquals(createExpectedList("A"), infixToPostfix.transformInfixToPostFix("A"));
         assertEquals(createExpectedList(""), infixToPostfix.transformInfixToPostFix("(((((((())))))))"));
+        assertEquals(createExpectedList("AB+"), infixToPostfix.transformInfixToPostFix("A+B*"));
     }
 
     @Test
@@ -122,6 +123,11 @@ public class InfixToPostfixTest {
                 break;
             case "Error":
                 expected.add("Not valid expression");
+                break;
+            case "AB+":
+                expected.add("A");
+                expected.add("B");
+                expected.add("+");
         }
         return expected;
     }
