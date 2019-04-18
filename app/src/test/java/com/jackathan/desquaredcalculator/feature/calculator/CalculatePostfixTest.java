@@ -41,6 +41,16 @@ public class CalculatePostfixTest {
     }
 
     @Test
+    public void test_subtractionWithNegativeResult() {
+        List<String> input = new ArrayList<>();
+        input.add("3");
+        input.add("8");
+        input.add("-");
+        input.add("+");
+        Assert.assertEquals("-5", calculatePostfix.calculate(input));
+    }
+
+    @Test
     public void test_multiplication() {
         List<String> input = new ArrayList<>();
         input.add("2");
@@ -140,4 +150,11 @@ public class CalculatePostfixTest {
         Assert.assertEquals("The last time I checked division with 0 was not possible", calculatePostfix.calculate(input));
     }
 
+    @Test
+    public void test_weirdCases() {
+        List<String> input = new ArrayList<>();
+        input.add("123");
+        input.add("+");
+        Assert.assertEquals("123", calculatePostfix.calculate(input));
+    }
 }

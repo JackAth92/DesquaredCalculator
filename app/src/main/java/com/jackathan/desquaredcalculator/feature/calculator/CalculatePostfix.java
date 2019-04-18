@@ -7,7 +7,7 @@ import java.util.Stack;
 public class CalculatePostfix implements CalculatePostfixInter {
     private Stack<String> stack;
 
-    CalculatePostfix() {
+    public CalculatePostfix() {
         stack = new Stack<>();
     }
 
@@ -16,6 +16,9 @@ public class CalculatePostfix implements CalculatePostfixInter {
         stack.clear();
         for (String part : input) {
             if (isOperator(part)) {
+                if (stack.size() <= 1) {
+                    break;
+                }
                 BigDecimal num2 = new BigDecimal(stack.pop());
                 BigDecimal num1 = new BigDecimal(stack.pop());
                 String result = "";
