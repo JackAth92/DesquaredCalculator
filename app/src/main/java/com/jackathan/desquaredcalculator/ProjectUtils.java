@@ -60,4 +60,22 @@ public class ProjectUtils {
         }
         return countParentLeft == countParentRight;
     }
+
+    public static boolean isOperator(String operator) {
+        switch (operator) {
+            case "+":
+                return true;
+            case "-":
+                return true;
+            case "*":
+                return true;
+            case "/":
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean isOperator(char operator) {
+        return isOperator(String.valueOf(operator));
+    }
 }

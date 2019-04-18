@@ -39,4 +39,15 @@ public class ProjectUtilsTest {
         Assert.assertFalse(ProjectUtils.isExpressionValid("(((152*(10-2))"));
     }
 
+    @Test
+    public void test_isOperator() {
+        Assert.assertTrue(ProjectUtils.isOperator("+"));
+        Assert.assertTrue(ProjectUtils.isOperator("-"));
+        Assert.assertTrue(ProjectUtils.isOperator("*"));
+        Assert.assertTrue(ProjectUtils.isOperator("/"));
+        Assert.assertFalse(ProjectUtils.isOperator("5.21"));
+        Assert.assertFalse(ProjectUtils.isOperator("a"));
+        Assert.assertFalse(ProjectUtils.isOperator("a1"));
+    }
+
 }
